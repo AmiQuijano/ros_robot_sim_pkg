@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 .. module:: srvNode_b
 
@@ -14,8 +16,6 @@ Subscribes to:
 Service:
 **get_last_target** : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the request was successful or not.
 """
-
-#!/usr/bin/env python3
 
 # Ami Sofia Quijano Shimizu
 # Reseach Track 1 - Assignment 2 b)

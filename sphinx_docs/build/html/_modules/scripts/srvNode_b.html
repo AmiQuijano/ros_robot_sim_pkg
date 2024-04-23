@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for scripts.srvNode_b</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">.. module:: srvNode_b</span>
 
 <span class="sd">   :platform: Unix</span>
@@ -86,8 +88,6 @@
 <span class="sd">**get_last_target** : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the request was successful or not.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1">#!/usr/bin/env python3</span>
-
 <span class="c1"># Ami Sofia Quijano Shimizu</span>
 <span class="c1"># Reseach Track 1 - Assignment 2 b)</span>
 
@@ -96,8 +96,8 @@
 
 <span class="c1"># Useful imports</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.srv</span> <span class="kn">import</span> <span class="n">GetLastTarget</span><span class="p">,</span> <span class="n">GetLastTargetResponse</span>  <span class="c1"># Import the custom service message</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.msg</span> <span class="kn">import</span> <span class="n">PlanningActionGoal</span> <span class="c1"># Import the message type from /reaching_goal/goal topic</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.srv</span> <span class="kn">import</span> <span class="n">GetLastTarget</span><span class="p">,</span> <span class="n">GetLastTargetResponse</span>  <span class="c1"># Import the custom service message</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.msg</span> <span class="kn">import</span> <span class="n">PlanningActionGoal</span> <span class="c1"># Import the message type from /reaching_goal/goal topic</span>
 
 
 <div class="viewcode-block" id="GetLastTargetService"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.GetLastTargetService">[docs]</a><span class="k">class</span> <span class="nc">GetLastTargetService</span><span class="p">:</span>

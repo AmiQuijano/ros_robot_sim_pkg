@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 .. module:: acNode_a
 
@@ -20,8 +22,6 @@ Action Client of this Action Server:
 **/researching_goal** : 
 """
 
-#!/usr/bin/env python3
-
 # Ami Sofia Quijano Shimizu
 # Reseach Track 1 - Assignment 2 a)
 
@@ -35,8 +35,8 @@ import select
 import actionlib
 import actionlib.msg
 from nav_msgs.msg import Odometry # Import message type of /odom topic
-from assignment_2_2023.msg import PlanningAction, PlanningGoal # Import action message type
-from assignment_2_2023.msg import PosVel # Import custom message type
+from ros_robot_simulation_pkg.msg import PlanningAction, PlanningGoal # Import action message type
+from ros_robot_simulation_pkg.msg import PosVel # Import custom message type
 
 
 class ActionClient:
@@ -147,7 +147,11 @@ class ActionClient:
         rospy.loginfo("\n" + str(feedback))
         
 
-if __name__ == '__main__':
+def main():
+    """
+    Description
+        Initialization of action-client node and calling of function get_user_input() to ask and read the user's input
+    """
     
     try:
         # Initialize the action-client node
@@ -169,4 +173,13 @@ if __name__ == '__main__':
         # If for some issue the previous lines could't be executed, print this message:
         print("Program interrupted before completion", file=sys.stderr)
         
+
+
+
+if __name__ == '__main__':
+    main()
+    
+    
+    
+    
         

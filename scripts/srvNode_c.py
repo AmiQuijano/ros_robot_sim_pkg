@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 .. module:: srvNode_c
 
@@ -17,8 +19,6 @@ Subscribes to:
 Service:
 **get_dist_speed** : Service which 
 """
-
-#!/usr/bin/env python3
 
 # Ami Sofia Quijano Shimizu
 # Research Track 1 - Assignment 2 c)

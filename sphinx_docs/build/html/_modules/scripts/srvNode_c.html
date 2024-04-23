@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for scripts.srvNode_c</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">.. module:: srvNode_c</span>
 
 <span class="sd">   :platform: Unix</span>
@@ -89,8 +91,6 @@
 <span class="sd">**get_dist_speed** : Service which </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1">#!/usr/bin/env python3</span>
-
 <span class="c1"># Ami Sofia Quijano Shimizu</span>
 <span class="c1"># Research Track 1 - Assignment 2 c)</span>
 
@@ -100,9 +100,9 @@
 <span class="c1"># Useful imports</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.srv</span> <span class="kn">import</span> <span class="n">GetDistSpeed</span><span class="p">,</span> <span class="n">GetDistSpeedResponse</span>  <span class="c1"># Import the custom service message</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.msg</span> <span class="kn">import</span> <span class="n">PosVel</span> <span class="c1"># Import the custom message type</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.msg</span> <span class="kn">import</span> <span class="n">PlanningActionGoal</span> <span class="c1"># Import the message type from /reaching_goal/goal topic</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.srv</span> <span class="kn">import</span> <span class="n">GetDistSpeed</span><span class="p">,</span> <span class="n">GetDistSpeedResponse</span>  <span class="c1"># Import the custom service message</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.msg</span> <span class="kn">import</span> <span class="n">PosVel</span> <span class="c1"># Import the custom message type</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.msg</span> <span class="kn">import</span> <span class="n">PlanningActionGoal</span> <span class="c1"># Import the message type from /reaching_goal/goal topic</span>
 <span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span> <span class="c1"># Import message type of /odom topic</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Point</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>  <span class="c1"># Import deque for efficient averaging</span>

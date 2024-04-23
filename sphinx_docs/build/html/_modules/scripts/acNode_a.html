@@ -69,7 +69,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for scripts.acNode_a</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">.. module:: acNode_a</span>
 
 <span class="sd">   :platform: Unix</span>
@@ -91,8 +93,6 @@
 <span class="sd">**/researching_goal** : </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1">#!/usr/bin/env python3</span>
-
 <span class="c1"># Ami Sofia Quijano Shimizu</span>
 <span class="c1"># Reseach Track 1 - Assignment 2 a)</span>
 
@@ -106,8 +106,8 @@
 <span class="kn">import</span> <span class="nn">actionlib</span>
 <span class="kn">import</span> <span class="nn">actionlib.msg</span>
 <span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span> <span class="c1"># Import message type of /odom topic</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.msg</span> <span class="kn">import</span> <span class="n">PlanningAction</span><span class="p">,</span> <span class="n">PlanningGoal</span> <span class="c1"># Import action message type</span>
-<span class="kn">from</span> <span class="nn">assignment_2_2023.msg</span> <span class="kn">import</span> <span class="n">PosVel</span> <span class="c1"># Import custom message type</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.msg</span> <span class="kn">import</span> <span class="n">PlanningAction</span><span class="p">,</span> <span class="n">PlanningGoal</span> <span class="c1"># Import action message type</span>
+<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.msg</span> <span class="kn">import</span> <span class="n">PosVel</span> <span class="c1"># Import custom message type</span>
 
 
 <div class="viewcode-block" id="ActionClient"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.ActionClient">[docs]</a><span class="k">class</span> <span class="nc">ActionClient</span><span class="p">:</span>
@@ -218,7 +218,11 @@
         <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">feedback</span><span class="p">))</span></div></div>
         
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        Initialization of action-client node and calling of function get_user_input() to ask and read the user&#39;s input</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Initialize the action-client node</span>
@@ -238,8 +242,17 @@
         
     <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
         <span class="c1"># If for some issue the previous lines could&#39;t be executed, print this message:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program interrupted before completion&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program interrupted before completion&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span></div>
         
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+    
+    
+    
+    
         
 </pre></div>
 

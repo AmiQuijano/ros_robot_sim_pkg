@@ -1,0 +1,8 @@
+#GOAL (What the client sends to the server for requesting the action to be performed):
+geometry_msgs/PoseStamped target_pose
+---
+#RESULT: 
+---
+#FEEDBACK (What the server sends to the client regarding the ongoing progress of the action):
+geometry_msgs/Pose actual_pose
+string stat

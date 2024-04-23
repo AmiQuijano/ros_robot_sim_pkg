@@ -1,0 +1,19 @@
+# GetDistSpeed.srv
+
+# This is a service message to retrieve the coordinates of the distance between the robot and the target, as well as the average speed
+
+
+# Empty request message 
+
+---
+
+# Response message definition
+
+float64 dist_x  	# distance in x-axis from the robot's position to the target
+float64 dist_y		# distance in y-axis from the robot's position to the target
+float64 dist_eucl	# Euclidean distance from the robot's position to the target
+bool success_dist  	# Indicates if the request was successful for calculating the distance 
+
+float64 avg_vel_x 	# average linear speed in x-axis
+float64 avg_vel_z	# average angular speed in z-axis
+bool success_avg_vel 	# Indicates if the request was successful for calculating the velocity

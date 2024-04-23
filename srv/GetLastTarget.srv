@@ -1,0 +1,15 @@
+# GetLastTarget.srv
+
+# This is a service message to retrieve the coordinates of the last target sent by user
+
+
+# Empty request message 
+
+---
+
+# Response message definition
+
+float64 x  # x-coordinate of the last target
+float64 y  # y-coordinate of the last target
+bool success  # Indicates if the request was successful
+

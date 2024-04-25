@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'RT1_Assignment2_ROS'
+project = 'ros_robot_sim_pkg'
 copyright = '2024, Ami Sofia Quijano Shimizu'
 author = 'Ami Sofia Quijano Shimizu'
 release = '1.0'

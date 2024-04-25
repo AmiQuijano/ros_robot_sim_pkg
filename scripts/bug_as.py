@@ -7,7 +7,7 @@ from nav_msgs.msg import Odometry
 import math
 import actionlib
 import actionlib.msg
-import ros_robot_simulation_pkg.msg
+import ros_robot_sim_pkg.msg
 from tf import transformations
 from std_srvs.srv import *
 import time
@@ -100,8 +100,8 @@ def planning(goal):
     rospy.set_param('des_pos_y', desired_position_.y)
     
     
-    feedback = ros_robot_simulation_pkg.msg.PlanningFeedback()
-    result = ros_robot_simulation_pkg.msg.PlanningResult()
+    feedback = ros_robot_sim_pkg.msg.PlanningFeedback()
+    result = ros_robot_sim_pkg.msg.PlanningResult()
     
     while not rospy.is_shutdown():
         err_pos = math.sqrt(pow(desired_position_.y - position_.y, 2) +
@@ -174,7 +174,7 @@ def main():
         '/go_to_point_switch', SetBool)
     srv_client_wall_follower_ = rospy.ServiceProxy(
         '/wall_follower_switch', SetBool)
-    act_s = actionlib.SimpleActionServer('/reaching_goal', ros_robot_simulation_pkg.msg.PlanningAction, planning, auto_start=False)
+    act_s = actionlib.SimpleActionServer('/reaching_goal', ros_robot_sim_pkg.msg.PlanningAction, planning, auto_start=False)
     act_s.start()
    
     # initialize going to the point

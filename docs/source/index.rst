@@ -1,9 +1,9 @@
-.. RT1_Assignment2_ROS documentation master file, created by
+.. ros_robot_sim_pkg documentation master file, created by
    sphinx-quickstart on Sun Apr 21 21:24:05 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to RT1_Assignment2_ROS's documentation!
+Welcome to ros_robot_sim_pkg's documentation!
 ===============================================
 
 .. toctree::
@@ -19,9 +19,10 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-RT1_Assignment2_ROS's documentation!
-**************************************
-This is the documentation of the RT1_Assignment2_ROS's package.
+Research Track 1 - Assignment 2 documentation!
+************************************************
+This is the documentation of the ros_robot_sim_pkg ROS package.
+This package contains all files regarding Assignment 2 of the Research Track 1 course.
 
 Node (a)
 ===========================

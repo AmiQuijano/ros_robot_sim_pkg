@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>scripts.srvNode_b &mdash; RT1_Assignment2_ROS 1.0 documentation</title>
+  <title>scripts.srvNode_b &mdash; ros_robot_sim_pkg 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            RT1_Assignment2_ROS
+            ros_robot_sim_pkg
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -50,7 +50,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">RT1_Assignment2_ROS</a>
+          <a href="../../index.html">ros_robot_sim_pkg</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -96,8 +96,8 @@
 
 <span class="c1"># Useful imports</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
-<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.srv</span> <span class="kn">import</span> <span class="n">GetLastTarget</span><span class="p">,</span> <span class="n">GetLastTargetResponse</span>  <span class="c1"># Import the custom service message</span>
-<span class="kn">from</span> <span class="nn">ros_robot_simulation_pkg.msg</span> <span class="kn">import</span> <span class="n">PlanningActionGoal</span> <span class="c1"># Import the message type from /reaching_goal/goal topic</span>
+<span class="kn">from</span> <span class="nn">ros_robot_sim_pkg.srv</span> <span class="kn">import</span> <span class="n">GetLastTarget</span><span class="p">,</span> <span class="n">GetLastTargetResponse</span>  <span class="c1"># Import the custom service message</span>
+<span class="kn">from</span> <span class="nn">ros_robot_sim_pkg.msg</span> <span class="kn">import</span> <span class="n">PlanningActionGoal</span> <span class="c1"># Import the message type from /reaching_goal/goal topic</span>
 
 
 <div class="viewcode-block" id="GetLastTargetService"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.GetLastTargetService">[docs]</a><span class="k">class</span> <span class="nc">GetLastTargetService</span><span class="p">:</span>

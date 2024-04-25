@@ -25,8 +25,8 @@ Service:
 
 # Useful imports
 import rospy
-from ros_robot_simulation_pkg.srv import GetLastTarget, GetLastTargetResponse  # Import the custom service message
-from ros_robot_simulation_pkg.msg import PlanningActionGoal # Import the message type from /reaching_goal/goal topic
+from ros_robot_sim_pkg.srv import GetLastTarget, GetLastTargetResponse  # Import the custom service message
+from ros_robot_sim_pkg.msg import PlanningActionGoal # Import the message type from /reaching_goal/goal topic
 
 
 class GetLastTargetService:

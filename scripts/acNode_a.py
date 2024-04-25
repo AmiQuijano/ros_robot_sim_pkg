@@ -35,8 +35,8 @@ import select
 import actionlib
 import actionlib.msg
 from nav_msgs.msg import Odometry # Import message type of /odom topic
-from ros_robot_simulation_pkg.msg import PlanningAction, PlanningGoal # Import action message type
-from ros_robot_simulation_pkg.msg import PosVel # Import custom message type
+from ros_robot_sim_pkg.msg import PlanningAction, PlanningGoal # Import action message type
+from ros_robot_sim_pkg.msg import PosVel # Import custom message type
 
 
 class ActionClient:

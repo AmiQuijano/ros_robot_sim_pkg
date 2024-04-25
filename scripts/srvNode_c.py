@@ -29,9 +29,9 @@ Service:
 # Useful imports
 import rospy
 import math
-from ros_robot_simulation_pkg.srv import GetDistSpeed, GetDistSpeedResponse  # Import the custom service message
-from ros_robot_simulation_pkg.msg import PosVel # Import the custom message type
-from ros_robot_simulation_pkg.msg import PlanningActionGoal # Import the message type from /reaching_goal/goal topic
+from ros_robot_sim_pkg.srv import GetDistSpeed, GetDistSpeedResponse  # Import the custom service message
+from ros_robot_sim_pkg.msg import PosVel # Import the custom message type
+from ros_robot_sim_pkg.msg import PlanningActionGoal # Import the message type from /reaching_goal/goal topic
 from nav_msgs.msg import Odometry # Import message type of /odom topic
 from geometry_msgs.msg import Point
 from collections import deque  # Import deque for efficient averaging

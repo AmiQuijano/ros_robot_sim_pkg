@@ -84,19 +84,25 @@
 <span class="sd">The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), by relying on the values published on the topic /odom.</span>
 
 <span class="sd">Subscribes to:</span>
-<span class="sd">**/odom** : Topic which receives odometry information </span>
+
+<span class="sd">**/odom** : Topic which receives the robot&#39;s odometry as messages of type ``nav_msgs/Odometry``, which includes header, child_frame_id, pose (xyz position, xyzw orientation, covariance), </span>
+<span class="sd">and twist (xyz linear twist, xyz angular twist, covariance)</span>
 
 <span class="sd">Publishes to:</span>
-<span class="sd">**/PosVel** : Position and velocity (x, y, vel_x, vel_z) as a custom message</span>
+
+<span class="sd">**/PosVel** : Topic which receives the robot&#39;s position (in x and y) and velocity (in x and z) as a custom message of type ``PosVel``.</span>
 
 <span class="sd">Action Client of this Action Server:</span>
-<span class="sd">**/researching_goal** : </span>
+
+<span class="sd">**/reaching_goal**</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># Ami Sofia Quijano Shimizu</span>
 <span class="c1"># Reseach Track 1 - Assignment 2 a)</span>
 
-<span class="c1"># Instructions: Create a node that implements an action-client, allowing the user to input in the terminal a target (x, y) or to cancel it. Use the feedback of the action-server to know when the target has been reached. The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), by relying on the values published on the topic /odom.</span>
+<span class="c1"># Instructions: Create a node that implements an action-client, allowing the user to input in the terminal a target (x, y) or to cancel it. </span>
+<span class="c1"># Use the feedback of the action-server to know when the target has been reached. The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), </span>
+<span class="c1"># by relying on the values published on the topic /odom.</span>
 
 
 <span class="c1"># Useful imports</span>
@@ -112,16 +118,19 @@
 
 <div class="viewcode-block" id="ActionClient"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.ActionClient">[docs]</a><span class="k">class</span> <span class="nc">ActionClient</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Description: Class for representing the Action-Client node</span>
+<span class="sd">    Brief: Class for representing the Action-Client node</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ActionClient.__init__"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.ActionClient.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
+<span class="sd">        Brief:</span>
 <span class="sd">            Initialization function for the required ROS Action-Alient, Subscriber, Publisher and Message</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            ``self``: Instance of the class ``ActionClient``</span>
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. Creates an action-client for the action-server ``/reaching_goal`` with action message ``Planning``</span>
+<span class="sd">            2. Creates a goal object for the action message ``Planning``</span>
+<span class="sd">            3. Creates a subscriber for the topic ``/odom``</span>
+<span class="sd">            4. Creates a publisher for the topic ``/PosVel``, where the custom message type ``PosVel`` is sent</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="c1"># Create an action-client for /reaching_goal server</span>
@@ -142,11 +151,14 @@
 
 <div class="viewcode-block" id="ActionClient.get_user_input"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.ActionClient.get_user_input">[docs]</a>    <span class="k">def</span> <span class="nf">get_user_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
+<span class="sd">        Brief:</span>
 <span class="sd">            Function that asks the user to input a goal coordinate or to cancel the current goal. </span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            ``self``: Instance of the class ``ActionClient``</span>
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. Prompts a message in the terminal asking the user to input &#39;X Y&#39; coordinates or &#39;c&#39; to cancel the goal</span>
+<span class="sd">            2. If &#39;c&#39; is inputted, the function for cancelling the goal is called</span>
+<span class="sd">            3. If an &#39;X Y&#39; coordinate is entered, those values are sent to the action-server</span>
+<span class="sd">            4. In case of invalid inputs, sends an error message and prompts again.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter the goal coordinates as &#39;x y&#39; or enter &#39;c&#39; to cancel the goal: &quot;</span><span class="p">)</span>
@@ -185,12 +197,15 @@
 
 <div class="viewcode-block" id="ActionClient.odom_callback"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.ActionClient.odom_callback">[docs]</a>    <span class="k">def</span> <span class="nf">odom_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
-<span class="sd">            Subscriber callback function that saves the x and y position and the x and z velocity from the /odom topic in a custom message and publishes it</span>
+<span class="sd">        Brief:</span>
+<span class="sd">            Subscriber callback function that publishes the x and y position and the x and z velocity of the robot</span>
 
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. Stores the x position, y position, x velocity and z velocity from the ``/odom`` topic in a ``PosVel`` type message</span>
+<span class="sd">            2. Publishes these positions and velocities in the topic ``/PosVel``</span>
+<span class="sd">        </span>
 <span class="sd">        Args:</span>
-<span class="sd">            ``msg``: Message from the ``/odom`` topic</span>
-<span class="sd">            ``self``: Instance of the class ``ActionClient``</span>
+<span class="sd">            msg: Message from the ``/odom`` topic</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Create custom message for position and velocity information (from /odom)</span>
@@ -206,12 +221,15 @@
 
 <div class="viewcode-block" id="ActionClient.feedback_callback"><a class="viewcode-back" href="../../index.html#scripts.acNode_a.ActionClient.feedback_callback">[docs]</a>    <span class="k">def</span> <span class="nf">feedback_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
-<span class="sd">            Action callback function that displays the feedback from the action-server </span>
+<span class="sd">        Brief:</span>
+<span class="sd">            Action callback function that displays the feedback sent by the action-server </span>
+
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. The feedback message of the action ``Planning`` is printed. The feedback message incudes the actual pose </span>
+<span class="sd">            (xyz position and xyzw orientation) and the status (which tells if the target has been reached or not)</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            ``feedback``: Feedback from the action-server</span>
-<span class="sd">            ``self``: Instance of the class ``ActionClient``</span>
+<span class="sd">            feedback: Feedback message of the action ``Planning``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
   
         <span class="c1"># Print in the terminal the feedback (actual position and status)</span>

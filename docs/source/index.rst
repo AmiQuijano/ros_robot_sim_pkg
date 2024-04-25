@@ -19,10 +19,13 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Research Track 1 - Assignment 2 documentation!
+Research Track 2 - Assignment 1: Documentation
 ************************************************
-This is the documentation of the ros_robot_sim_pkg ROS package.
-This package contains all files regarding Assignment 2 of the Research Track 1 course.
+This is the documentation of the ROS package 'ros_robot_sim_pkg'.
+
+This package was developed for the Research Track 1 course and documented for the Research Track 2 course. 
+
+Below, you will find further descriptions of Nodes (a), (b) and (c) written in Python which were used to simulate a robot in Gazebo environment. 
 
 Node (a)
 ===========================

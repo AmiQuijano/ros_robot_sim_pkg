@@ -13,19 +13,25 @@ It uses the feedback of the action-server to know when the target has been reach
 The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), by relying on the values published on the topic /odom.
 
 Subscribes to:
-**/odom** : Topic which receives odometry information 
+
+**/odom** : Topic which receives the robot's odometry as messages of type ``nav_msgs/Odometry``, which includes header, child_frame_id, pose (xyz position, xyzw orientation, covariance), 
+and twist (xyz linear twist, xyz angular twist, covariance)
 
 Publishes to:
-**/PosVel** : Position and velocity (x, y, vel_x, vel_z) as a custom message
+
+**/PosVel** : Topic which receives the robot's position (in x and y) and velocity (in x and z) as a custom message of type ``PosVel``.
 
 Action Client of this Action Server:
-**/researching_goal** : 
+
+**/reaching_goal**
 """
 
 # Ami Sofia Quijano Shimizu
 # Reseach Track 1 - Assignment 2 a)
 
-# Instructions: Create a node that implements an action-client, allowing the user to input in the terminal a target (x, y) or to cancel it. Use the feedback of the action-server to know when the target has been reached. The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), by relying on the values published on the topic /odom.
+# Instructions: Create a node that implements an action-client, allowing the user to input in the terminal a target (x, y) or to cancel it. 
+# Use the feedback of the action-server to know when the target has been reached. The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), 
+# by relying on the values published on the topic /odom.
 
 
 # Useful imports
@@ -41,16 +47,19 @@ from ros_robot_sim_pkg.msg import PosVel # Import custom message type
 
 class ActionClient:
     """
-    Description: Class for representing the Action-Client node
+    Brief: Class for representing the Action-Client node
     """
 
     def __init__(self):
         """
-        Description:
+        Brief:
             Initialization function for the required ROS Action-Alient, Subscriber, Publisher and Message
 
-        Args:
-            ``self``: Instance of the class ``ActionClient``
+        Detailed Description:
+            1. Creates an action-client for the action-server ``/reaching_goal`` with action message ``Planning``
+            2. Creates a goal object for the action message ``Planning``
+            3. Creates a subscriber for the topic ``/odom``
+            4. Creates a publisher for the topic ``/PosVel``, where the custom message type ``PosVel`` is sent
         """
         
         # Create an action-client for /reaching_goal server
@@ -71,11 +80,14 @@ class ActionClient:
 
     def get_user_input(self):
         """
-        Description:
+        Brief:
             Function that asks the user to input a goal coordinate or to cancel the current goal. 
 
-        Args:
-            ``self``: Instance of the class ``ActionClient``
+        Detailed Description:
+            1. Prompts a message in the terminal asking the user to input 'X Y' coordinates or 'c' to cancel the goal
+            2. If 'c' is inputted, the function for cancelling the goal is called
+            3. If an 'X Y' coordinate is entered, those values are sent to the action-server
+            4. In case of invalid inputs, sends an error message and prompts again.
         """
 
         print("Enter the goal coordinates as 'x y' or enter 'c' to cancel the goal: ")
@@ -114,12 +126,15 @@ class ActionClient:
 
     def odom_callback(self, msg):
         """
-        Description:
-            Subscriber callback function that saves the x and y position and the x and z velocity from the /odom topic in a custom message and publishes it
+        Brief:
+            Subscriber callback function that publishes the x and y position and the x and z velocity of the robot
 
+        Detailed Description:
+            1. Stores the x position, y position, x velocity and z velocity from the ``/odom`` topic in a ``PosVel`` type message
+            2. Publishes these positions and velocities in the topic ``/PosVel``
+        
         Args:
-            ``msg``: Message from the ``/odom`` topic
-            ``self``: Instance of the class ``ActionClient``
+            msg: Message from the ``/odom`` topic
         """
 
         # Create custom message for position and velocity information (from /odom)
@@ -135,12 +150,15 @@ class ActionClient:
 
     def feedback_callback(self, feedback):
         """
-        Description:
-            Action callback function that displays the feedback from the action-server 
+        Brief:
+            Action callback function that displays the feedback sent by the action-server 
+
+        Detailed Description:
+            1. The feedback message of the action ``Planning`` is printed. The feedback message incudes the actual pose 
+            (xyz position and xyzw orientation) and the status (which tells if the target has been reached or not)
 
         Args:
-            ``feedback``: Feedback from the action-server
-            ``self``: Instance of the class ``ActionClient``
+            feedback: Feedback message of the action ``Planning``
         """
   
         # Print in the terminal the feedback (actual position and status)

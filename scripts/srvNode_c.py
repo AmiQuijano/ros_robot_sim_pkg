@@ -8,16 +8,20 @@
 
 .. moduleauthor:: Ami Sofia Quijano Shimizu
 
-This node implements 
-1) A service that subscribes to the robot’s position and velocity (using the custom message) and 
-2) Implements a server to retrieve the distance of the robot from the target and the robot’s average speed. The size of the averaging window is set as a parameter in the launch file.
+This node subscribes to the robot’s position and velocity (using the custom message) and implements a service to retrieve the distance of the robot from the target and the robot’s average speed. 
+The size of the averaging window is set as a parameter in the launch file.
 
 Subscribes to:
-**/PosVel** : Topic which 
-**/reaching_goal/goal**: 
+
+**/PosVel**: Topic which receives the robot's position (in x and y) and velocity (in x and z) as a custom message of type ``PosVel``.
+
+**/reaching_goal/goal**: Topic which receives information about the last goal sent including header, goal ID, target position and target orientation
 
 Service:
-**get_dist_speed** : Service which 
+
+**get_dist_speed**: Service which replies with the x, y and euclidean distances from the robot to the current target, the average linear speed in x, 
+the average angular speed in and z, a boolean which indicates if the service request was successful for distance calculation and another boolean which indicates 
+if the service request was successful for velocity calculation
 """
 
 # Ami Sofia Quijano Shimizu
@@ -40,17 +44,23 @@ from collections import deque  # Import deque for efficient averaging
 
 class GetDistSpeedService:
     """
-    Description:
-        {description}
+    Brief:
+        Class for representing the GetDistSpeedService node
     """
 
     def __init__(self):
         """
-        Description:
+        Brief:
             Initialization function for the ROS service, subscriber, and variables as required
 
-        Args:
-            {args}
+        Detailed Description:
+            1. Creates a list variable ``last_target`` to store the last target coordinates sent as [x y]
+            2. Creates a variable ``posvel`` of the message type ``PosVel`` to store the robot's current xy position and  xz velocity
+            3. Creates the ``window_size`` variable which corresponds to the N velocities that will be averaged. It is a parameter from the launch file  
+            4. Creates the variables ``avg_vel_x_queue`` and ``avg_vel_z_queue`` to queue and store the last N velocities in x and z
+            5. Creates the service ``get_dist_speed`` with service message type ``GetDistSpeed``
+            6. Creates a subscriber for the ``/reaching_goal/goal`` topic
+            7. Creates a subscriber for the ``/PosVel`` topic
         """
 
         # Variable to store the last target coordinates
@@ -78,12 +88,14 @@ class GetDistSpeedService:
 
     def target_callback(self, msg):
         """
-        Description:
-            Subscriber callback function to update the last_target variable when a new target is received in the /reaching_goal/goal topic
+        Brief:
+            Subscriber callback function that updates the last target coordinates when the user enters a new target
+
+        Detailed Description:
+            1. Saves the x and y coordinates of the last target in the variable ``last_target`` by splitting the message received in the ``/reaching_goal/goal`` topic 
 
         Args:
-            ``msg``:
-            ``self``:
+            ``msg``: Message received in the ``/reaching_goal/goal`` topic
         """
         
         # Save in last_target variable the x and y position message from /reaching_goal/goal topic
@@ -98,12 +110,15 @@ class GetDistSpeedService:
             
     def posvel_callback(self, msg):
         """
-        Description:
-            Subscriber callback function to update the robot's position and velocity variables when a new message is received in the /PosVel topic
+        Brief:
+            Subscriber callback function that updates the robot's current x,y positions and x,z velocities and stores it in the queue the velocities
+
+        Detailed Description:
+            1. Saves the current x and y coordinates and the current x and z velocities in the variable ``posvel`` by splitting the message received in the ``/PosVel`` topic 
+            2. Appends in the queue list variables ``avg_vel_x_queue`` and ``avg_vel_z_queue`` the x and z velocities (for average caculation)
 
         Args:
-            ``msg``:
-            ``self``:
+            ``msg``: Message received in the ``/PosVel`` topic
         """
 
         # Update the robot's current position
@@ -120,12 +135,22 @@ class GetDistSpeedService:
 
     def handle_get_dist_speed(self, req):
         """
-        Description:
+        Brief:
             Service callback function to handle requests for the robot's distance from the target and average speed
 
+        Detailed Description:
+            1. Creates a response object for the service message ``GetDistSpeed``
+            2. If at least one target has been sent by user, the cartesian x and y distances and euclidean distance from the robot to the target are computed (with values obtained from the previous 2 Subscriber callback functions) and sent as a service response message together with a successful request confirmation for the distance calculation
+            3. If no target has been sent at all, an unsuccessful request confirmation for the distance calculation is sent as the service response message
+            4. If there are N registered speeds according to the window size, the average of x and z velocities are computed and sent as a service response message together with a successful request confirmation for the average speed calculation
+            5. If there are less than N registered speeds according to the window size, an unsuccessful request confirmation for the average speed calculation is sent as a service response message 
+
         Args:
-            ``req``:
-            ``self``:
+            req: Request message sent to the server
+        
+        Returns:
+
+        **response**: ``GetDistSpeed`` service response message
         """
 
         # Create a response object using the custom service message type
@@ -180,8 +205,12 @@ class GetDistSpeedService:
         # Return the response to the service caller
         return response
 
-if __name__ == '__main__':
 
+def main():
+    """
+    Brief:
+        Initialization of the service node
+    """
     try:
         # Initialize the ROS node
         rospy.init_node('get_dist_speed_server')
@@ -195,4 +224,10 @@ if __name__ == '__main__':
     except rospy.ROSInterruptException:
         # If for some issue the previous lines couldn't be executed, print this message:
         print("Program interrupted before completion", file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
+
+    
 

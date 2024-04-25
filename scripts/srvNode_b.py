@@ -11,10 +11,12 @@
 This node implements a service node that, when called, returns the coordinates of the last target sent by the user. 
 
 Subscribes to:
+
 **/reaching_goal/goal** : Topic which receives coordinates of the last target sent
 
 Service:
-**get_last_target** : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the request was successful or not.
+
+**get_last_target** : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the service request was successful or not.
 """
 
 # Ami Sofia Quijano Shimizu
@@ -31,17 +33,19 @@ from ros_robot_sim_pkg.msg import PlanningActionGoal # Import the message type f
 
 class GetLastTargetService:
     """
-    Description:
+    Brief:
         Class for representing the GetLastTargetService node
     """
 
     def __init__(self):
         """
-        Description:
-            Initialization function for the ROS service, subscriber and variable as required
+        Brief:
+            Initialization function for the ROS service, Subscriber and variables as required
 
-        Args:
-            ``self``: Instance of the class ``class GetLastTargetService``
+        Detailed Description:
+            1. Creates a list variable ``last_target`` to store the last target coordinates sent as [x y]
+            2. Creates the service ``get_last_target`` with service message type ``GetLastTarget``
+            3. Creates a subscriber for the topic ``/reaching_goal/goal``
         """
     
         # Variable to store the last target coordinates
@@ -56,12 +60,14 @@ class GetLastTargetService:
 
     def target_callback(self, msg):
         """
-        Description:
-            Subscriber callback function to update the last_target variable when a new target is received in the /reaching_goal/goal topic
+        Brief:
+            Subscriber callback function that updates the last target coordinates when the user enters a new target
+
+        Detailed Description:
+            1. Saves the x and y coordinates of the last target in the variable ``last_target`` by splitting the message received in the ``/reaching_goal/goal`` topic 
 
         Args:
-            ``self``: Instance of the class ``class GetLastTargetService``
-            ``msg``: Message received in the ``/reaching_goal/goal`` topic
+            msg: Message received in the ``/reaching_goal/goal`` topic
         """
         
         # Save in last_target variable the x and y position message from /reaching_goal/goal topic
@@ -76,12 +82,20 @@ class GetLastTargetService:
 
     def handle_get_last_target(self, req):
         """
-        Description:
+        Brief:
             Service callback function to handle requests for the last target coordinates
+            
+        Detailed Description:
+            1. Creates a response object for the service message ``GetLastTarget``  
+            2. If at least one target has been sent by user, the x and y coordinates of the last target (obtained from the Subscriber callback function) as well as a successful request confirmation are set as the service response message  
+            3. If no target has been sent at all, an unsuccessful request confirmation is sent as the service response message
 
         Args:
-            ``self``: Instance of the class ``class GetLastTargetService``
-            ``req``: Request message sent to the server
+            req: Request message sent to the server
+
+        Returns:
+
+        **response**: ``GetLastTarget`` service response message
         """
         
         # Create a response object using the custom service message type
@@ -99,15 +113,19 @@ class GetLastTargetService:
         
         # Return the response to the service caller
         return response  
-        
 
-if __name__ == '__main__':
+
+def main():
+    """
+    Description:
+        Initialization of the service node
+    """
 
     try:
         # Initialize the ROS node
         rospy.init_node('get_last_target_server')
     
-        # Instantiate the GetLastTargetServer class and start the ROS node
+        # Instantiate the GetLastTargetService class and start the ROS node
         get_last_target_service = GetLastTargetService()
     
         # Keep the script running until the node is shut down
@@ -116,5 +134,10 @@ if __name__ == '__main__':
     except rospy.ROSInterruptException:
         # If for some issue the previous lines could't be executed, print this message:
         print("Program interrupted before completion", file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
+    
     
 

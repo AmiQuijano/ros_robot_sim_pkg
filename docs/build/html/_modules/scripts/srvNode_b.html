@@ -82,10 +82,12 @@
 <span class="sd">This node implements a service node that, when called, returns the coordinates of the last target sent by the user. </span>
 
 <span class="sd">Subscribes to:</span>
+
 <span class="sd">**/reaching_goal/goal** : Topic which receives coordinates of the last target sent</span>
 
 <span class="sd">Service:</span>
-<span class="sd">**get_last_target** : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the request was successful or not.</span>
+
+<span class="sd">**get_last_target** : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the service request was successful or not.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># Ami Sofia Quijano Shimizu</span>
@@ -102,17 +104,19 @@
 
 <div class="viewcode-block" id="GetLastTargetService"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.GetLastTargetService">[docs]</a><span class="k">class</span> <span class="nc">GetLastTargetService</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Description:</span>
+<span class="sd">    Brief:</span>
 <span class="sd">        Class for representing the GetLastTargetService node</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="GetLastTargetService.__init__"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.GetLastTargetService.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
-<span class="sd">            Initialization function for the ROS service, subscriber and variable as required</span>
+<span class="sd">        Brief:</span>
+<span class="sd">            Initialization function for the ROS service, Subscriber and variables as required</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            ``self``: Instance of the class ``class GetLastTargetService``</span>
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. Creates a list variable ``last_target`` to store the last target coordinates sent as [x y]</span>
+<span class="sd">            2. Creates the service ``get_last_target`` with service message type ``GetLastTarget``</span>
+<span class="sd">            3. Creates a subscriber for the topic ``/reaching_goal/goal``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     
         <span class="c1"># Variable to store the last target coordinates</span>
@@ -127,12 +131,14 @@
 
 <div class="viewcode-block" id="GetLastTargetService.target_callback"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.GetLastTargetService.target_callback">[docs]</a>    <span class="k">def</span> <span class="nf">target_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
-<span class="sd">            Subscriber callback function to update the last_target variable when a new target is received in the /reaching_goal/goal topic</span>
+<span class="sd">        Brief:</span>
+<span class="sd">            Subscriber callback function that updates the last target coordinates when the user enters a new target</span>
+
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. Saves the x and y coordinates of the last target in the variable ``last_target`` by splitting the message received in the ``/reaching_goal/goal`` topic </span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            ``self``: Instance of the class ``class GetLastTargetService``</span>
-<span class="sd">            ``msg``: Message received in the ``/reaching_goal/goal`` topic</span>
+<span class="sd">            msg: Message received in the ``/reaching_goal/goal`` topic</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="c1"># Save in last_target variable the x and y position message from /reaching_goal/goal topic</span>
@@ -147,12 +153,20 @@
 
 <div class="viewcode-block" id="GetLastTargetService.handle_get_last_target"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.GetLastTargetService.handle_get_last_target">[docs]</a>    <span class="k">def</span> <span class="nf">handle_get_last_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Description:</span>
+<span class="sd">        Brief:</span>
 <span class="sd">            Service callback function to handle requests for the last target coordinates</span>
+<span class="sd">            </span>
+<span class="sd">        Detailed Description:</span>
+<span class="sd">            1. Creates a response object for the service message ``GetLastTarget``  </span>
+<span class="sd">            2. If at least one target has been sent by user, the x and y coordinates of the last target (obtained from the Subscriber callback function) as well as a successful request confirmation are set as the service response message  </span>
+<span class="sd">            3. If no target has been sent at all, an unsuccessful request confirmation is sent as the service response message</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            ``self``: Instance of the class ``class GetLastTargetService``</span>
-<span class="sd">            ``req``: Request message sent to the server</span>
+<span class="sd">            req: Request message sent to the server</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        **response**: ``GetLastTarget`` service response message</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="c1"># Create a response object using the custom service message type</span>
@@ -170,15 +184,19 @@
         
         <span class="c1"># Return the response to the service caller</span>
         <span class="k">return</span> <span class="n">response</span>  </div></div>
-        
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../index.html#scripts.srvNode_b.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description:</span>
+<span class="sd">        Initialization of the service node</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Initialize the ROS node</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;get_last_target_server&#39;</span><span class="p">)</span>
     
-        <span class="c1"># Instantiate the GetLastTargetServer class and start the ROS node</span>
+        <span class="c1"># Instantiate the GetLastTargetService class and start the ROS node</span>
         <span class="n">get_last_target_service</span> <span class="o">=</span> <span class="n">GetLastTargetService</span><span class="p">()</span>
     
         <span class="c1"># Keep the script running until the node is shut down</span>
@@ -186,7 +204,12 @@
     
     <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
         <span class="c1"># If for some issue the previous lines could&#39;t be executed, print this message:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program interrupted before completion&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program interrupted before completion&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+    
     
 
 </pre></div>

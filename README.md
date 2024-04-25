@@ -11,7 +11,7 @@ This ROS simulator encompasses the visualization of a mobile robot able to reach
 The ROS package *assignment_2_2023* containing all the files for this simulator was obtained from this [repository](https://github.com/CarmineD8/assignment_2_2023.git)
 
 ### Documentation
- [https://amiquijano.github.io/ros_robot_simulation_pkg/] 
+ [https://amiquijano.github.io/ros_robot_sim_pkg/] 
 
 ### Visualization tools
 * **RViz**: a ROS 3D visualization tool which allows the user to view the robot model as well as the output of its sensors (i.e. laser, camera). It allows to see what the robot "sees". In this case, it visualizes the robot, its motion on a grid surface and the output of the laser, i.e. the obstacles or walls detected by the robot's laser according to the laser's reach.

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to ros_robot_sim_pkg’s documentation! &mdash; ros_robot_sim_pkg 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=359c27e9"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            ros_robot_sim_pkg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to ros_robot_sim_pkg’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a><ul>
+<li><a class="reference internal" href="#research-track-2-assignment-1-documentation">Research Track 2 - Assignment 1: Documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.acNode_a">Node (a)</a><ul>
+<li><a class="reference internal" href="#scripts.acNode_a.ActionClient"><code class="docutils literal notranslate"><span class="pre">ActionClient</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.acNode_a.ActionClient.__init__"><code class="docutils literal notranslate"><span class="pre">ActionClient.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.acNode_a.ActionClient.feedback_callback"><code class="docutils literal notranslate"><span class="pre">ActionClient.feedback_callback()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.acNode_a.ActionClient.get_user_input"><code class="docutils literal notranslate"><span class="pre">ActionClient.get_user_input()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.acNode_a.ActionClient.odom_callback"><code class="docutils literal notranslate"><span class="pre">ActionClient.odom_callback()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.acNode_a.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.srvNode_b">Node (b)</a><ul>
+<li><a class="reference internal" href="#scripts.srvNode_b.GetLastTargetService"><code class="docutils literal notranslate"><span class="pre">GetLastTargetService</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.srvNode_b.GetLastTargetService.__init__"><code class="docutils literal notranslate"><span class="pre">GetLastTargetService.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.srvNode_b.GetLastTargetService.handle_get_last_target"><code class="docutils literal notranslate"><span class="pre">GetLastTargetService.handle_get_last_target()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.srvNode_b.GetLastTargetService.target_callback"><code class="docutils literal notranslate"><span class="pre">GetLastTargetService.target_callback()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.srvNode_b.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.srvNode_c">Node (c)</a><ul>
+<li><a class="reference internal" href="#scripts.srvNode_c.GetDistSpeedService"><code class="docutils literal notranslate"><span class="pre">GetDistSpeedService</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.srvNode_c.GetDistSpeedService.__init__"><code class="docutils literal notranslate"><span class="pre">GetDistSpeedService.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.srvNode_c.GetDistSpeedService.handle_get_dist_speed"><code class="docutils literal notranslate"><span class="pre">GetDistSpeedService.handle_get_dist_speed()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.srvNode_c.GetDistSpeedService.posvel_callback"><code class="docutils literal notranslate"><span class="pre">GetDistSpeedService.posvel_callback()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.srvNode_c.GetDistSpeedService.target_callback"><code class="docutils literal notranslate"><span class="pre">GetDistSpeedService.target_callback()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.srvNode_c.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ros_robot_sim_pkg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to ros_robot_sim_pkg’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-ros-robot-sim-pkg-s-documentation">
+<h1>Welcome to ros_robot_sim_pkg’s documentation!<a class="headerlink" href="#welcome-to-ros-robot-sim-pkg-s-documentation" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<section id="research-track-2-assignment-1-documentation">
+<h2>Research Track 2 - Assignment 1: Documentation<a class="headerlink" href="#research-track-2-assignment-1-documentation" title="Permalink to this heading"></a></h2>
+<p>This is the documentation of the ROS package ‘ros_robot_sim_pkg’.</p>
+<p>This package was developed for the Research Track 1 course and documented for the Research Track 2 course.</p>
+<p>Below, you will find further descriptions of Nodes (a), (b) and (c) written in Python which were used to simulate a robot in Gazebo environment.</p>
+</section>
+</section>
+<section id="module-scripts.acNode_a">
+<span id="node-a"></span><h1>Node (a)<a class="headerlink" href="#module-scripts.acNode_a" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-acNode_a"></span><dl class="field-list simple">
+<dt class="field-odd">platform<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unix</p>
+</dd>
+<dt class="field-even">synopsis<span class="colon">:</span></dt>
+<dd class="field-even"><p>Action-Client ROS Node for robot simulator</p>
+</dd>
+</dl>
+<p><em>Module author: Ami Sofia Quijano Shimizu</em></p>
+<p>This node implements an action-client, allowing the user to input in the terminal a target (x, y) or to cancel it.
+It uses the feedback of the action-server to know when the target has been reached.
+The node also publishes the robot position and velocity as a custom message (x, y, vel_x, vel_z), by relying on the values published on the topic /odom.</p>
+<p>Subscribes to:</p>
+<p><strong>/odom</strong> : Topic which receives the robot’s odometry as messages of type <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code>, which includes header, child_frame_id, pose (xyz position, xyzw orientation, covariance),
+and twist (xyz linear twist, xyz angular twist, covariance)</p>
+<p>Publishes to:</p>
+<p><strong>/PosVel</strong> : Topic which receives the robot’s position (in x and y) and velocity (in x and z) as a custom message of type <code class="docutils literal notranslate"><span class="pre">PosVel</span></code>.</p>
+<p>Action Client of this Action Server:</p>
+<p><strong>/reaching_goal</strong></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.acNode_a.ActionClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.acNode_a.</span></span><span class="sig-name descname"><span class="pre">ActionClient</span></span><a class="reference internal" href="_modules/scripts/acNode_a.html#ActionClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.acNode_a.ActionClient" title="Permalink to this definition"></a></dt>
+<dd><p>Brief: Class for representing the Action-Client node</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.acNode_a.ActionClient.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/acNode_a.html#ActionClient.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.acNode_a.ActionClient.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Initialization function for the required ROS Action-Alient, Subscriber, Publisher and Message</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Creates an action-client for the action-server <code class="docutils literal notranslate"><span class="pre">/reaching_goal</span></code> with action message <code class="docutils literal notranslate"><span class="pre">Planning</span></code></p></li>
+<li><p>Creates a goal object for the action message <code class="docutils literal notranslate"><span class="pre">Planning</span></code></p></li>
+<li><p>Creates a subscriber for the topic <code class="docutils literal notranslate"><span class="pre">/odom</span></code></p></li>
+<li><p>Creates a publisher for the topic <code class="docutils literal notranslate"><span class="pre">/PosVel</span></code>, where the custom message type <code class="docutils literal notranslate"><span class="pre">PosVel</span></code> is sent</p></li>
+</ol>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.acNode_a.ActionClient.feedback_callback">
+<span class="sig-name descname"><span class="pre">feedback_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/acNode_a.html#ActionClient.feedback_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.acNode_a.ActionClient.feedback_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Action callback function that displays the feedback sent by the action-server</p>
+</dd>
+<dt>Detailed Description:</dt><dd><p>1. The feedback message of the action <code class="docutils literal notranslate"><span class="pre">Planning</span></code> is printed. The feedback message incudes the actual pose
+(xyz position and xyzw orientation) and the status (which tells if the target has been reached or not)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>feedback</strong> – Feedback message of the action <code class="docutils literal notranslate"><span class="pre">Planning</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.acNode_a.ActionClient.get_user_input">
+<span class="sig-name descname"><span class="pre">get_user_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/acNode_a.html#ActionClient.get_user_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.acNode_a.ActionClient.get_user_input" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Function that asks the user to input a goal coordinate or to cancel the current goal.</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Prompts a message in the terminal asking the user to input ‘X Y’ coordinates or ‘c’ to cancel the goal</p></li>
+<li><p>If ‘c’ is inputted, the function for cancelling the goal is called</p></li>
+<li><p>If an ‘X Y’ coordinate is entered, those values are sent to the action-server</p></li>
+<li><p>In case of invalid inputs, sends an error message and prompts again.</p></li>
+</ol>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.acNode_a.ActionClient.odom_callback">
+<span class="sig-name descname"><span class="pre">odom_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/acNode_a.html#ActionClient.odom_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.acNode_a.ActionClient.odom_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Subscriber callback function that publishes the x and y position and the x and z velocity of the robot</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Stores the x position, y position, x velocity and z velocity from the <code class="docutils literal notranslate"><span class="pre">/odom</span></code> topic in a <code class="docutils literal notranslate"><span class="pre">PosVel</span></code> type message</p></li>
+<li><p>Publishes these positions and velocities in the topic <code class="docutils literal notranslate"><span class="pre">/PosVel</span></code></p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> – Message from the <code class="docutils literal notranslate"><span class="pre">/odom</span></code> topic</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.acNode_a.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.acNode_a.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/acNode_a.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.acNode_a.main" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>Initialization of action-client node and calling of function get_user_input() to ask and read the user’s input</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.srvNode_b">
+<span id="node-b"></span><h1>Node (b)<a class="headerlink" href="#module-scripts.srvNode_b" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-srvNode_b"></span><dl class="field-list simple">
+<dt class="field-odd">platform<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unix</p>
+</dd>
+<dt class="field-even">synopsis<span class="colon">:</span></dt>
+<dd class="field-even"><p>Service ROS Node for robot simulator</p>
+</dd>
+</dl>
+<p><em>Module author: Ami Sofia Quijano Shimizu</em></p>
+<p>This node implements a service node that, when called, returns the coordinates of the last target sent by the user.</p>
+<p>Subscribes to:</p>
+<p><strong>/reaching_goal/goal</strong> : Topic which receives coordinates of the last target sent</p>
+<p>Service:</p>
+<p><strong>get_last_target</strong> : Service which replies with the x and y coordinates of the last target sent as well as a boolean which indicates if the service request was successful or not.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.srvNode_b.GetLastTargetService">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.srvNode_b.</span></span><span class="sig-name descname"><span class="pre">GetLastTargetService</span></span><a class="reference internal" href="_modules/scripts/srvNode_b.html#GetLastTargetService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_b.GetLastTargetService" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Class for representing the GetLastTargetService node</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_b.GetLastTargetService.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_b.html#GetLastTargetService.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_b.GetLastTargetService.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Initialization function for the ROS service, Subscriber and variables as required</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Creates a list variable <code class="docutils literal notranslate"><span class="pre">last_target</span></code> to store the last target coordinates sent as [x y]</p></li>
+<li><p>Creates the service <code class="docutils literal notranslate"><span class="pre">get_last_target</span></code> with service message type <code class="docutils literal notranslate"><span class="pre">GetLastTarget</span></code></p></li>
+<li><p>Creates a subscriber for the topic <code class="docutils literal notranslate"><span class="pre">/reaching_goal/goal</span></code></p></li>
+</ol>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_b.GetLastTargetService.handle_get_last_target">
+<span class="sig-name descname"><span class="pre">handle_get_last_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">req</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_b.html#GetLastTargetService.handle_get_last_target"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_b.GetLastTargetService.handle_get_last_target" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Service callback function to handle requests for the last target coordinates</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Creates a response object for the service message <code class="docutils literal notranslate"><span class="pre">GetLastTarget</span></code></p></li>
+<li><p>If at least one target has been sent by user, the x and y coordinates of the last target (obtained from the Subscriber callback function) as well as a successful request confirmation are set as the service response message</p></li>
+<li><p>If no target has been sent at all, an unsuccessful request confirmation is sent as the service response message</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>req</strong> – Request message sent to the server</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">GetLastTarget</span></code> service response message</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GetLastTargetResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_b.GetLastTargetService.target_callback">
+<span class="sig-name descname"><span class="pre">target_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_b.html#GetLastTargetService.target_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_b.GetLastTargetService.target_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Subscriber callback function that updates the last target coordinates when the user enters a new target</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Saves the x and y coordinates of the last target in the variable <code class="docutils literal notranslate"><span class="pre">last_target</span></code> by splitting the message received in the <code class="docutils literal notranslate"><span class="pre">/reaching_goal/goal</span></code> topic</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> – Message received in the <code class="docutils literal notranslate"><span class="pre">/reaching_goal/goal</span></code> topic</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.srvNode_b.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.srvNode_b.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_b.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_b.main" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Initialization of the service node</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.srvNode_c">
+<span id="node-c"></span><h1>Node (c)<a class="headerlink" href="#module-scripts.srvNode_c" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-srvNode_c"></span><dl class="field-list simple">
+<dt class="field-odd">platform<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unix</p>
+</dd>
+<dt class="field-even">synopsis<span class="colon">:</span></dt>
+<dd class="field-even"><p>Service ROS Node for robot simulator</p>
+</dd>
+</dl>
+<p><em>Module author: Ami Sofia Quijano Shimizu</em></p>
+<p>This node subscribes to the robot’s position and velocity (using the custom message) and implements a service to retrieve the distance of the robot from the target and the robot’s average speed.
+The size of the averaging window is set as a parameter in the launch file.</p>
+<p>Subscribes to:</p>
+<p><strong>/PosVel</strong>: Topic which receives the robot’s position (in x and y) and velocity (in x and z) as a custom message of type <code class="docutils literal notranslate"><span class="pre">PosVel</span></code>.</p>
+<p><strong>/reaching_goal/goal</strong>: Topic which receives information about the last goal sent including header, goal ID, target position and target orientation</p>
+<p>Service:</p>
+<p><strong>get_dist_speed</strong>: Service which replies with the x, y and euclidean distances from the robot to the current target, the average linear speed in x,
+the average angular speed in and z, a boolean which indicates if the service request was successful for distance calculation and another boolean which indicates
+if the service request was successful for velocity calculation</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.srvNode_c.GetDistSpeedService">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.srvNode_c.</span></span><span class="sig-name descname"><span class="pre">GetDistSpeedService</span></span><a class="reference internal" href="_modules/scripts/srvNode_c.html#GetDistSpeedService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_c.GetDistSpeedService" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Class for representing the GetDistSpeedService node</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_c.GetDistSpeedService.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_c.html#GetDistSpeedService.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_c.GetDistSpeedService.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Initialization function for the ROS service, subscriber, and variables as required</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Creates a list variable <code class="docutils literal notranslate"><span class="pre">last_target</span></code> to store the last target coordinates sent as [x y]</p></li>
+<li><p>Creates a variable <code class="docutils literal notranslate"><span class="pre">posvel</span></code> of the message type <code class="docutils literal notranslate"><span class="pre">PosVel</span></code> to store the robot’s current xy position and  xz velocity</p></li>
+<li><p>Creates the <code class="docutils literal notranslate"><span class="pre">window_size</span></code> variable which corresponds to the N velocities that will be averaged. It is a parameter from the launch file</p></li>
+<li><p>Creates the variables <code class="docutils literal notranslate"><span class="pre">avg_vel_x_queue</span></code> and <code class="docutils literal notranslate"><span class="pre">avg_vel_z_queue</span></code> to queue and store the last N velocities in x and z</p></li>
+<li><p>Creates the service <code class="docutils literal notranslate"><span class="pre">get_dist_speed</span></code> with service message type <code class="docutils literal notranslate"><span class="pre">GetDistSpeed</span></code></p></li>
+<li><p>Creates a subscriber for the <code class="docutils literal notranslate"><span class="pre">/reaching_goal/goal</span></code> topic</p></li>
+<li><p>Creates a subscriber for the <code class="docutils literal notranslate"><span class="pre">/PosVel</span></code> topic</p></li>
+</ol>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_c.GetDistSpeedService.handle_get_dist_speed">
+<span class="sig-name descname"><span class="pre">handle_get_dist_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">req</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_c.html#GetDistSpeedService.handle_get_dist_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_c.GetDistSpeedService.handle_get_dist_speed" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Service callback function to handle requests for the robot’s distance from the target and average speed</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Creates a response object for the service message <code class="docutils literal notranslate"><span class="pre">GetDistSpeed</span></code></p></li>
+<li><p>If at least one target has been sent by user, the cartesian x and y distances and euclidean distance from the robot to the target are computed (with values obtained from the previous 2 Subscriber callback functions) and sent as a service response message together with a successful request confirmation for the distance calculation</p></li>
+<li><p>If no target has been sent at all, an unsuccessful request confirmation for the distance calculation is sent as the service response message</p></li>
+<li><p>If there are N registered speeds according to the window size, the average of x and z velocities are computed and sent as a service response message together with a successful request confirmation for the average speed calculation</p></li>
+<li><p>If there are less than N registered speeds according to the window size, an unsuccessful request confirmation for the average speed calculation is sent as a service response message</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>req</strong> – Request message sent to the server</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">GetDistSpeed</span></code> service response message</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GetDistSpeedResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_c.GetDistSpeedService.posvel_callback">
+<span class="sig-name descname"><span class="pre">posvel_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_c.html#GetDistSpeedService.posvel_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_c.GetDistSpeedService.posvel_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Subscriber callback function that updates the robot’s current x,y positions and x,z velocities and stores it in the queue the velocities</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Saves the current x and y coordinates and the current x and z velocities in the variable <code class="docutils literal notranslate"><span class="pre">posvel</span></code> by splitting the message received in the <code class="docutils literal notranslate"><span class="pre">/PosVel</span></code> topic</p></li>
+<li><p>Appends in the queue list variables <code class="docutils literal notranslate"><span class="pre">avg_vel_x_queue</span></code> and <code class="docutils literal notranslate"><span class="pre">avg_vel_z_queue</span></code> the x and z velocities (for average caculation)</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> – Message received in the <code class="docutils literal notranslate"><span class="pre">/PosVel</span></code> topic</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.srvNode_c.GetDistSpeedService.target_callback">
+<span class="sig-name descname"><span class="pre">target_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_c.html#GetDistSpeedService.target_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_c.GetDistSpeedService.target_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Subscriber callback function that updates the last target coordinates when the user enters a new target</p>
+</dd>
+<dt>Detailed Description:</dt><dd><ol class="arabic simple">
+<li><p>Saves the x and y coordinates of the last target in the variable <code class="docutils literal notranslate"><span class="pre">last_target</span></code> by splitting the message received in the <code class="docutils literal notranslate"><span class="pre">/reaching_goal/goal</span></code> topic</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> – Message received in the <code class="docutils literal notranslate"><span class="pre">/reaching_goal/goal</span></code> topic</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.srvNode_c.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.srvNode_c.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/srvNode_c.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.srvNode_c.main" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Brief:</dt><dd><p>Initialization of the service node</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ami Sofia Quijano Shimizu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -66,7 +66,7 @@ class GetLastTargetService:
         Detailed Description:
             1. Saves the x and y coordinates of the last target in the variable ``last_target`` by splitting the message received in the ``/reaching_goal/goal`` topic 
 
-        Args:
+        Parameters:
             msg: Message received in the ``/reaching_goal/goal`` topic
         """
         
@@ -90,11 +90,11 @@ class GetLastTargetService:
             2. If at least one target has been sent by user, the x and y coordinates of the last target (obtained from the Subscriber callback function) as well as a successful request confirmation are set as the service response message  
             3. If no target has been sent at all, an unsuccessful request confirmation is sent as the service response message
 
-        Args:
+        Parameters:
             req: Request message sent to the server
 
         Returns:
-            response: ``GetLastTarget`` service response message
+            GetLastTargetResponse: ``GetLastTarget`` service response message
         """
         
         # Create a response object using the custom service message type

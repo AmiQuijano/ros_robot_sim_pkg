@@ -94,8 +94,7 @@ class GetLastTargetService:
             req: Request message sent to the server
 
         Returns:
-
-        **response**: ``GetLastTarget`` service response message
+            response: ``GetLastTarget`` service response message
         """
         
         # Create a response object using the custom service message type

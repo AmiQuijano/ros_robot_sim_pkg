@@ -149,8 +149,7 @@ class GetDistSpeedService:
             req: Request message sent to the server
         
         Returns:
-
-        **response**: ``GetDistSpeed`` service response message
+            response: ``GetDistSpeed`` service response message
         """
 
         # Create a response object using the custom service message type

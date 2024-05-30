@@ -329,5 +329,5 @@ jupyter notebook
 ```
 5. Once inside Jupyter Notebook enter the `jupyter_node.ipynb` file and click on Kernel > Restart & Run All
 
-**_Note_**: The Jupyter node does not work with custom messages. Therefore, it can be ran without downloading the whole package if you already have it downloaded (i.e. just downloading and running the Jupyter Notebook will work if the robot ).
+**_Note_**: The Jupyter node does not work with custom messages. Therefore, it can be ran without downloading the whole package if you already have it downloaded (i.e. just downloading and running the Jupyter Notebook will work if the robot simulator is already installed).
 

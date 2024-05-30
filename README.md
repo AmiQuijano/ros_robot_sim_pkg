@@ -323,7 +323,7 @@ catkin_make
 ```
 roslaunch ros_robot_sim_pkg ros_robot_sim.launch
 ```
-4. Open Jupyter notebook in the directory where you have downloaded the .ipynb file, typically with
+4. Open Jupyter notebook in the directory where you have downloaded the .ipynb file (if the repository was downloaded then the directory is ~/jupyter_scripts), typically with
 ```
 jupyter notebook
 ```
